@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyRandomDish</string>
+    <string name="recipe_link"><a href='https://www.google.com'>Recipe Link</a></string>
 </resources>
