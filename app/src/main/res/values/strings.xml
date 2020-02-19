@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MyRandomDish</string>
-    <string name="recipe_link"><a href='https://www.google.com'>Recipe Link</a></string>
+    <string name="dish_name">Dish Name</string>
+    <string name="dish_description"></string>
+    <string name="dish_picture">Dish Picture</string>
+    <string name="dish_recipe_link"><a href='https://www.google.com'>Recipe Link</a></string>
+    <string name="generate_dish">Tell me a Dish</string>
 </resources>

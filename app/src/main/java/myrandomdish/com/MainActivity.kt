@@ -1,24 +1,1 @@
-package myrandomdish.com
-
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
-import androidx.core.text.htmlEncode
-import androidx.core.text.parseAsHtml
-import kotlinx.android.synthetic.main.activity_main.*
-
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        dish_name.text = "Default Dish"
-        dish_description.text = "Simple Description of Dish"
-//        dish_recipe_link.text =
-    }
-
-    fun getMeADish(view: View) {
-
-    }
-}
+package myrandomdish.comimport androidx.appcompat.app.AppCompatActivityimport android.os.Bundleimport android.view.Viewimport android.widget.Toastimport com.android.volley.Requestimport com.android.volley.Responseimport com.android.volley.toolbox.JsonObjectRequestimport com.android.volley.toolbox.Volleyimport com.bumptech.glide.Glideimport kotlinx.android.synthetic.main.activity_main.*class MainActivity : AppCompatActivity() {    override fun onCreate(savedInstanceState: Bundle?) {        super.onCreate(savedInstanceState)        setContentView(R.layout.activity_main)        dishName.text = "Default Dish"        dishDescription.text = "Simple Description of Dish"        Toast.makeText(this, "Hello Fellow Hackfest People", Toast.LENGTH_LONG).show()    }    fun getMeADish(view: View) {        // REF: https://developer.android.com/training/volley/simple        //Instantiate the RequestQueue        val queue = Volley.newRequestQueue(this)//        val url = "https://tools.learningcontainer.com/sample-json.json"        // AMAZON Lambda Service        // CHANGE THIS TO YOUR LAMBDA! THIS WILL BE INACTIVE         val url = "https://ey7fciulf8.execute-api.ca-central-1.amazonaws.com/default/feed_me_now"        ////////////////////////////////////////////////////////////////////////////        // STRING FETCH        ////////////////////////////////////////////////////////////////////////////        // val url = ""        // Request a string response from the provided URL.//        val stringRequest = StringRequest(//            Request.Method.GET, url,//            Response.Listener<String> { response ->//                // Display 500 characters of the response string//                MessageView.text = "Response is: ${response.substring(0,500)}"//            },//            Response.ErrorListener { MessageView.text = "That didn't work!" })//        queue.add(stringRequest)        ////////////////////////////////////////////////////////////////////////////        // JSON OBJECT FETCH        ////////////////////////////////////////////////////////////////////////////        val jsonObjectRequest = JsonObjectRequest(            Request.Method.GET, url, null,            Response.Listener { response ->                dishName.text = response.getString("name")                dishDescription.text = response.getString("description")                dishRecipeLink.text = response.getString("recipe_url")                val imageURL  = response.getString("image_url")                Glide.with(this)                    .load(imageURL)                    .into(dishPicture);            },            Response.ErrorListener { error -> dishName.text = "That didn't work!" }        )        queue.add(jsonObjectRequest)    }}

@@ -13,7 +13,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/generate_dish"
+        app:layout_constraintBottom_toTopOf="@+id/show_me_a_dish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,39 +24,41 @@
             android:padding="10dp">
 
             <ImageView
-                android:id="@+id/label_1_icon"
+                android:id="@+id/dishPicture"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/dish_picture"
                 android:src="@drawable/food" />
 
             <TextView
-                android:id="@+id/dish_name"
+                android:id="@+id/dishName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@id/label_1_icon"
-                android:text="Dish Name"
+                android:layout_toEndOf="@id/dishPicture"
+                android:text="@string/dish_name"
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/dish_description"
+                android:id="@+id/dishDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/dish_name"
-                android:layout_toRightOf="@id/label_1_icon"
+                android:layout_below="@id/dishName"
+                android:layout_toEndOf="@id/dishPicture"
+                android:text="@string/dish_description"
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/dish_recipe_link"
+                android:id="@+id/dishRecipeLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/dish_description"
-                android:layout_toEndOf="@id/label_1_icon"
+                android:layout_below="@id/dishDescription"
+                android:layout_toEndOf="@id/dishPicture"
                 android:autoLink="web"
-                android:text="@string/recipe_link" />
+                android:text="@string/dish_recipe_link" />
 
         </RelativeLayout>
 
@@ -64,14 +66,18 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/generate_dish"
+        android:id="@+id/show_me_a_dish"
         android:layout_width="0dp"
         android:layout_height="74dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
         android:onClick="getMeADish"
-        android:text="Generate Dish"
+        android:text="@string/generate_dish"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
